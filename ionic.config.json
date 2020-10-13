@@ -1,0 +1,7 @@
+{
+  "name": "salati",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
