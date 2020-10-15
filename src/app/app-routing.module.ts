@@ -1,16 +1,37 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { GamesComponent } from './views/games/games.component';
+import { EditComponent } from './views/words/bundles/edit/edit.component';
+import { ListComponent } from './views/words/bundles/list/list.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: 'games'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
+    path: 'games',
+    component: GamesComponent
+  },
+  {
+    path: 'words',
+    children: [
+      {
+        path: 'bundles',
+        children: [
+          {
+            path: '',
+            component: ListComponent
+          },
+          {
+            path: 'edit',
+            component: EditComponent
+          },
+        ]
+      },
+    ]
+  },
 ];
 
 @NgModule({
