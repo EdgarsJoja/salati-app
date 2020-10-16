@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { GamesComponent } from './views/games/games.component';
-import { EditComponent as BundleEditComponent } from './views/words/bundles/edit/edit.component';
-import { ListComponent as BundlesListComponent } from './views/words/bundles/list/list.component';
+import { EditComponent as BundleEditComponent } from './views/bundles/edit/edit.component';
+import { ListComponent as BundlesListComponent } from './views/bundles/list/list.component';
 import { ListComponent as WordsListComponent } from './views/words/list/list.component';
 
 const routes: Routes = [
