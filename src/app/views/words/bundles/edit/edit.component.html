@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <app-back-button></app-back-button>
     </ion-buttons>
-    <ion-title>Edit Bundle</ion-title>
+    <ion-title>{{ bundle.name || 'New Bundle' }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="onSaveButtonClick()">
         <ion-icon slot="icon-only" name="checkmark" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -22,7 +22,7 @@
   <div id="container">
     <ion-item>
       <ion-label position="floating">Name</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="bundle.name"></ion-input>
     </ion-item>
   </div>
 </ion-content>
