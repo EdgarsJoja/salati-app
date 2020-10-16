@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Words Bundles',
-      url: '/words/bundles',
+      url: '/bundles',
       icon: 'book'
     },
   ];

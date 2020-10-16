@@ -42,7 +42,7 @@ export class ListComponent implements OnInit {
    * @param bundle
    */
   onBundleClick(bundle: WordBundle) {
-    this.router.navigate(["edit", bundle.id], { relativeTo: this.route });
+    this.router.navigate(["words", bundle.id], { relativeTo: this.route });
   }
 
   /**

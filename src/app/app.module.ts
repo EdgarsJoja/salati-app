@@ -15,8 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Views
 import { EditComponent } from './views/words/bundles/edit/edit.component';
-import { ListComponent } from './views/words/bundles/list/list.component';
+import { ListComponent as BundlesListComponent } from './views/words/bundles/list/list.component';
 import { GamesComponent } from './views/games/games.component';
+import { ListComponent as WordsListComponent } from './views/words/list/list.component';
 
 // Components
 import { BackButtonComponent } from './components/general/back-button/back-button.component';
@@ -26,8 +27,9 @@ import { BackButtonComponent } from './components/general/back-button/back-butto
     AppComponent,
     // Views
     EditComponent,
-    ListComponent,
+    BundlesListComponent,
     GamesComponent,
+    WordsListComponent,
     // Components
     BackButtonComponent,
   ],

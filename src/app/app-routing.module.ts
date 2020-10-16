@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { GamesComponent } from './views/games/games.component';
-import { EditComponent } from './views/words/bundles/edit/edit.component';
-import { ListComponent } from './views/words/bundles/list/list.component';
+import { EditComponent as BundleEditComponent } from './views/words/bundles/edit/edit.component';
+import { ListComponent as BundlesListComponent } from './views/words/bundles/list/list.component';
+import { ListComponent as WordsListComponent } from './views/words/list/list.component';
 
 const routes: Routes = [
   {
@@ -15,25 +16,24 @@ const routes: Routes = [
     component: GamesComponent
   },
   {
-    path: 'words',
+    path: 'bundles',
     children: [
       {
-        path: 'bundles',
-        children: [
-          {
-            path: '',
-            component: ListComponent
-          },
-          {
-            path: 'edit/:id',
-            component: EditComponent
-          },
-          {
-            path: 'edit',
-            component: EditComponent
-          },
-        ]
+        path: '',
+        component: BundlesListComponent
       },
+      {
+        path: 'edit/:id',
+        component: BundleEditComponent
+      },
+      {
+        path: 'edit',
+        component: BundleEditComponent
+      },
+      {
+        path: 'words/:id',
+        component: WordsListComponent
+      }
     ]
   },
 ];
