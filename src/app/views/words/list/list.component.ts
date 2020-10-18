@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { Word } from 'src/app/models/word';
 import { WordBundle } from 'src/app/models/word-bundle';
 import { WordBundleManagerService } from 'src/app/services/storage/word-bundle-manager.service';
+import { WordManagerService } from 'src/app/services/storage/word-manager.service';
 
 @Component({
   selector: 'app-list',
@@ -13,6 +15,8 @@ export class ListComponent implements OnInit {
 
   public bundle: WordBundle = new WordBundle();
 
+  public words: Array<Word> = [];
+
   /**
    * Constructor
    *
@@ -20,12 +24,14 @@ export class ListComponent implements OnInit {
    * @param route
    * @param router
    * @param actionSheet
+   * @param wordManager
    */
   constructor(
     private wordBundleManager: WordBundleManagerService,
     private route: ActivatedRoute,
     private router: Router,
-    private actionSheet: ActionSheetController
+    private actionSheet: ActionSheetController,
+    private wordManager: WordManagerService
   ) { }
 
   ngOnInit() {
@@ -33,8 +39,23 @@ export class ListComponent implements OnInit {
       if (params.bundleId) {
         this.wordBundleManager.getBundle(params.bundleId).then(bundle => {
           this.bundle = bundle;
+
+          this.loadWords();
         });
       }
+    });
+  }
+
+  ionViewWillEnter() {
+    this.loadWords();
+  }
+
+  /**
+   * Load bundle words
+   */
+  protected loadWords() {
+    this.wordManager.getBundleWords(this.bundle.id).then(words => {
+      this.words = words;
     });
   }
 

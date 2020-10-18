@@ -20,6 +20,12 @@
   </ion-header>
 
   <div id="container">
+    <ion-list lines="full">
+      <ion-item *ngFor="let word of words" button>
+        {{ word.text }}
+      </ion-item>
+    </ion-list>
+
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="onFabClick()">
         <ion-icon name="add"></ion-icon>
