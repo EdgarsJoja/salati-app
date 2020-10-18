@@ -14,10 +14,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // Views
-import { EditComponent } from './views/bundles/edit/edit.component';
+import { EditComponent as BundlesEditComponent } from './views/bundles/edit/edit.component';
 import { ListComponent as BundlesListComponent } from './views/bundles/list/list.component';
 import { GamesComponent } from './views/games/games.component';
 import { ListComponent as WordsListComponent } from './views/words/list/list.component';
+import { EditComponent as WordsEditComponent } from './views/words/edit/edit.component';
 
 // Components
 import { BackButtonComponent } from './components/general/back-button/back-button.component';
@@ -26,10 +27,11 @@ import { BackButtonComponent } from './components/general/back-button/back-butto
   declarations: [
     AppComponent,
     // Views
-    EditComponent,
     BundlesListComponent,
+    BundlesEditComponent,
     GamesComponent,
     WordsListComponent,
+    WordsEditComponent,
     // Components
     BackButtonComponent,
   ],

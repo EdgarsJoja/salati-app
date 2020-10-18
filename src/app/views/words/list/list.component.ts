@@ -30,8 +30,8 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (params.id) {
-        this.wordBundleManager.getBundle(params.id).then(bundle => {
+      if (params.bundleId) {
+        this.wordBundleManager.getBundle(params.bundleId).then(bundle => {
           this.bundle = bundle;
         });
       }
@@ -81,5 +81,12 @@ export class ListComponent implements OnInit {
     this.wordBundleManager.deleteBundle(this.bundle.id).then(result => {
       this.router.navigate(['/bundles']);
     });
+  }
+
+  /**
+   * On fab button click
+   */
+  onFabClick() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 }

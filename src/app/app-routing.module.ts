@@ -4,6 +4,7 @@ import { GamesComponent } from './views/games/games.component';
 import { EditComponent as BundleEditComponent } from './views/bundles/edit/edit.component';
 import { ListComponent as BundlesListComponent } from './views/bundles/list/list.component';
 import { ListComponent as WordsListComponent } from './views/words/list/list.component';
+import { EditComponent as WordsEditComponent } from './views/words/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -27,13 +28,22 @@ const routes: Routes = [
         component: BundleEditComponent
       },
       {
-        path: 'edit',
+        path: 'new',
         component: BundleEditComponent
       },
       {
-        path: 'words/:id',
-        component: WordsListComponent
-      }
+        path: 'words',
+        children: [
+          {
+            path: ':bundleId',
+            component: WordsListComponent
+          },
+          {
+            path: ':bundleId/new',
+            component: WordsEditComponent
+          }
+        ]
+      },
     ]
   },
 ];

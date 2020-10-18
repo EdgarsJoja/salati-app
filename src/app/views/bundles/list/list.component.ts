@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
    * On FAB button click
    */
   onFabClick() {
-    this.router.navigate(["edit"], { relativeTo: this.route });
+    this.router.navigate(["new"], { relativeTo: this.route });
   }
 
   /**
