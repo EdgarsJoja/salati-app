@@ -55,7 +55,10 @@ export class ListComponent implements OnInit {
    */
   protected loadWords() {
     this.wordManager.getBundleWords(this.bundle.id).then(words => {
-      this.words = words;
+      this.words = words.sort((a, b) => {
+        // @todo: Create setting for enabling/disabling sorting
+        return b.text < a.text ? 1 : -1;
+      });
     });
   }
 

@@ -54,6 +54,27 @@ export class WordManagerService {
     });
   }
 
+  /**
+   * Delete specific bundle words
+   *
+   * @param bundleId
+   */
+  public async deleteBundleWords(bundleId: string): Promise<any> {
+    return this.storage.get(this.storageKey).then(words => {
+      words = Object.values(words).reduce((result, word: Word) => {
+        if (word.bundleId === bundleId) {
+          return result;
+        }
+
+        result[word.id] = word;
+
+        return result;
+      }, {});
+
+      return this.storage.set(this.storageKey, words);
+    });
+  }
+
     /**
    * Delete specific word
    *

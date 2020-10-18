@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { WordBundle } from 'src/app/models/word-bundle';
 import { UuidService } from '../general/uuid.service';
+import { WordManagerService } from './word-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,9 @@ export class WordBundleManagerService {
    *
    * @param storage
    * @param uuid
+   * @param wordManager
    */
-  constructor(private storage: Storage, private uuid: UuidService) { }
+  constructor(private storage: Storage, private uuid: UuidService, private wordManager: WordManagerService) { }
 
   /**
    * Save bundle into storage
@@ -65,12 +67,12 @@ export class WordBundleManagerService {
    * @param id
    */
   public async deleteBundle(id: string): Promise<any> {
-    // @todo: Add word deletion
+    return this.wordManager.deleteBundleWords(id).then(async () => {
+      return this.storage.get(this.storageKey).then(value => {
+        delete value[id];
 
-    return this.storage.get(this.storageKey).then(value => {
-      delete value[id];
-
-      return this.storage.set(this.storageKey, value);
+        return this.storage.set(this.storageKey, value);
+      });
     });
   }
 }
