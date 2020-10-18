@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>{{ bundle.name }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="secondary" (click)="onMoreButtonClick()">
+      <ion-button (click)="onMoreButtonClick()">
         <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -22,7 +22,12 @@
   <div id="container">
     <ion-list lines="full">
       <ion-item *ngFor="let word of words" button>
-        {{ word.text }}
+        <ion-label>{{ word.text }}</ion-label>
+        <ion-buttons slot="end">
+          <ion-button color="danger" (click)="onWordDeleteClick(word.id)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </ion-list>
 

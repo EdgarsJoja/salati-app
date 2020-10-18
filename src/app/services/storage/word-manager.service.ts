@@ -53,4 +53,17 @@ export class WordManagerService {
       });
     });
   }
+
+    /**
+   * Delete specific word
+   *
+   * @param id
+   */
+  public async deleteWord(id: string): Promise<any> {
+    return this.storage.get(this.storageKey).then(value => {
+      delete value[id];
+
+      return this.storage.set(this.storageKey, value);
+    });
+  }
 }

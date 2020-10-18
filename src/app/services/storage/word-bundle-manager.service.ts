@@ -60,11 +60,13 @@ export class WordBundleManagerService {
   }
 
   /**
-   * Delete specific bundle
+   * Delete specific
    *
    * @param id
    */
   public async deleteBundle(id: string): Promise<any> {
+    // @todo: Add word deletion
+
     return this.storage.get(this.storageKey).then(value => {
       delete value[id];
 

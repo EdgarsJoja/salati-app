@@ -110,4 +110,17 @@ export class ListComponent implements OnInit {
   onFabClick() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
+
+  /**
+   * Delete word
+   *
+   * @param deleteId
+   */
+  onWordDeleteClick(deleteId: string) {
+    this.wordManager.deleteWord(deleteId).then(result => {
+      this.words = this.words.filter((word: Word): word is Word => {
+        return word.id !== deleteId;
+      });
+    });
+  }
 }
