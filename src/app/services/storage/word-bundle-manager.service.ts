@@ -58,4 +58,17 @@ export class WordBundleManagerService {
       return value[id] || new WordBundle();
     });
   }
+
+  /**
+   * Delete specific bundle
+   *
+   * @param id
+   */
+  public async deleteBundle(id: string): Promise<any> {
+    return this.storage.get(this.storageKey).then(value => {
+      delete value[id];
+
+      return this.storage.set(this.storageKey, value);
+    });
+  }
 }
