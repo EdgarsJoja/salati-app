@@ -28,7 +28,12 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (params.bundleId) {
+      if (params.wordId) {
+        this.wordManager.getWord(params.wordId).then(word => {
+          this.word = word;
+        });
+      } else if (params.bundleId) {
+        // Add bundleId for new words, existing should already have it
         this.word.bundleId = params.bundleId;
       }
     });

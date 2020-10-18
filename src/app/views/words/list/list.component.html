@@ -21,10 +21,10 @@
 
   <div id="container">
     <ion-list lines="full">
-      <ion-item *ngFor="let word of words" button>
+      <ion-item *ngFor="let word of words" button (click)="onWordClick(word.id)">
         <ion-label>{{ word.text }}</ion-label>
         <ion-buttons slot="end">
-          <ion-button color="danger" (click)="onWordDeleteClick(word.id)">
+          <ion-button color="danger" (click)="onWordDeleteClick($event, word.id)">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-button>
         </ion-buttons>

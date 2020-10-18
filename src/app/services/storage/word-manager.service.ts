@@ -87,4 +87,15 @@ export class WordManagerService {
       return this.storage.set(this.storageKey, value);
     });
   }
+
+  /**
+   * Get specific word by id
+   *
+   * @param id
+   */
+  public async getWord(id: string): Promise<Word> {
+    return this.storage.get(this.storageKey).then(words => {
+      return words[id] || new Word();
+    });
+  }
 }

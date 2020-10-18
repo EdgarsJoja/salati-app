@@ -117,13 +117,25 @@ export class ListComponent implements OnInit {
   /**
    * Delete word
    *
+   * @param event
    * @param deleteId
    */
-  onWordDeleteClick(deleteId: string) {
+  onWordDeleteClick(event: Event, deleteId: string) {
+    event.stopPropagation();
+
     this.wordManager.deleteWord(deleteId).then(result => {
       this.words = this.words.filter((word: Word): word is Word => {
         return word.id !== deleteId;
       });
     });
+  }
+
+  /**
+   * On words list item click
+   *
+   * @param wordId
+   */
+  onWordClick(wordId: string) {
+    this.router.navigate(['edit', wordId], { relativeTo: this.route });
   }
 }

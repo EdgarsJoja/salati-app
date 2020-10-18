@@ -41,6 +41,10 @@ const routes: Routes = [
           {
             path: ':bundleId/new',
             component: WordsEditComponent
+          },
+          {
+            path: ':bundleId/edit/:wordId',
+            component: WordsEditComponent
           }
         ]
       },
